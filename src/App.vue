@@ -1,71 +1,144 @@
 <template>
   <div>
-    <h2>搜尋機票</h2>
-    <div>
-      <label for="origin">出發地:</label>
-      <input type="text" id="origin" v-model="origin" />
-    </div>
-    <div>
-      <label for="destination">目的地:</label>
-      <input type="text" id="destination" v-model="destination" />
-    </div>
-    <div>
-      <label for="departDate">出發日期:</label>
-      <input type="date" id="departDate" v-model="departDate" />
-    </div>
-    <div>
-      <label for="returnDate">回程日期:</label>
-      <input type="date" id="returnDate" v-model="returnDate" />
-    </div>
-    <button @click="searchFlights">搜尋</button>
-    <div v-if="isLoading">搜尋中...</div>
-    <div v-else-if="results.length > 0">
-      <h2>搜尋結果:</h2>
-      <ul>
-        <li v-for="result in results" :key="result.id">
-          {{ result.origin }} - {{ result.destination }} {{ result.price }}
-        </li>
-      </ul>
-    </div>
+    <h1>Skyscanner Search</h1>
+    <form @submit.prevent="searchFlights">
+      <div class="form-group">
+        <label for="from">From:</label>
+        <autocomplete
+          id="from"
+          v-model="from"
+          :options="airportOptions"
+          placeholder="Enter an airport code"
+          :filter-by-query="true"
+        ></autocomplete>
+      </div>
+      <div class="form-group">
+        <label for="to">To:</label>
+        <autocomplete
+          id="to"
+          v-model="to"
+          :options="airportOptions"
+          placeholder="Enter an airport code"
+          :filter-by-query="true"
+        ></autocomplete>
+      </div>
+      <div class="form-group">
+        <label for="departDate">Depart:</label>
+        <datepicker v-model="departDate"></datepicker>
+      </div>
+      <div class="form-group">
+        <label for="returnDate">Return:</label>
+        <datepicker v-model="returnDate"></datepicker>
+      </div>
+      <div class="form-group">
+        <label for="passengers">Passengers:</label>
+        <select v-model="passengers" id="passengers">
+          <option v-for="num in 10" :key="num" :value="num">{{ num }}</option>
+        </select>
+      </div>
+      <button type="submit">Search Flights</button>
+    </form>
+    <ul>
+      <li v-for="flight in flights" :key="flight.id">
+        <h3>{{ flight.origin }} to {{ flight.destination }}</h3>
+        <p>Depart: {{ flight.departureDate }}</p>
+        <p>Return: {{ flight.returnDate }}</p>
+        <p>Price: {{ flight.price }}</p>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import { ref } from 'vue'
+import Autocomplete from 'vue3-autocomplete'
+import Datepicker from 'vue3-datepicker'
+import airportData from './airport.json'
 
 export default {
-  data() {
-    return {
-      origin: '',
-      destination: '',
-      departDate: '',
-      returnDate: '',
-      isLoading: false,
-      results: [],
-    };
+  components: {
+    Autocomplete,
+    Datepicker,
   },
-  methods: {
-    async searchFlights() {
-      this.isLoading = true;
-      this.results = [];
+  setup() {
+    const from = ref('')
+    const to = ref('')
+    const departDate = ref(new Date().toISOString().substr(0, 10))
+    const returnDate = ref('')
+    const passengers = ref(1)
+    const flights = ref([])
+    const airportOptions = ref(airportData.map(airport => airport.iata_code))
 
-      try {
-        const response = await axios.get('https://skyscanner-api-url', {
-          params: {
-            origin: this.origin,
-            destination: this.destination,
-            departDate: this.departDate,
-            returnDate: this.retSurnDate,
-          },
-        });
-        console.log(response);
-        this.results = response.data;
-      } catch (error) {
-        console.error(error);
+    const searchFlights = () => {
+      // Check if from and to airports are selected
+      if (!from.value || !to.value) {
+        alert('Please select both departure and destination airports.')
+        return
       }
+      // Check if return date is after depart date
+      if (returnDate.value && returnDate.value < departDate.value) {
+        alert('Return date must be after depart date.')
+        return
+      }
+      // Check if number of passengers is valid
+      if (passengers.value <= 0) {
+        alert('Number of passengers must be greater than 0.')
+        return
+      }
+      // implement flight search logic here
+    }
 
-      this.isLoading = false;
-    },
-  },
-};
+    return {
+      from,
+      to,
+      departDate,
+      returnDate,
+      passengers,
+      flights,
+      airportOptions,
+      searchFlights
+    }
+  }
+}
 </script>
+
+<style>
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  border: 1px solid black;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.autocomplete-results {
+  position: absolute;
+  z-index: 10;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.autocomplete-result {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.autocomplete-result.highlight {
+  background-color: #ccc;
+}
+
+.autocomplete-result:first-child {
+  border-top: 1px solid #ccc;
+}
+
+</style>
