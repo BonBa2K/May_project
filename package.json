@@ -12,7 +12,9 @@
     "highcharts": "^10.3.3",
     "highcharts-vue": "^1.4.0",
     "solana-wallets-vue": "^0.6.0",
-    "vue": "^3.2.45"
+    "vue": "^3.2.45",
+    "vue3-autocomplete": "^1.0.4",
+    "vue3-datepicker": "^0.3.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",

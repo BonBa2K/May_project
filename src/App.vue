@@ -4,23 +4,13 @@
     <form @submit.prevent="searchFlights">
       <div class="form-group">
         <label for="from">From:</label>
-        <autocomplete
-          id="from"
-          v-model="from"
-          :options="airportOptions"
-          placeholder="Enter an airport code"
-          :filter-by-query="true"
-        ></autocomplete>
+        <autocomplete id="from" v-model="from" :options="airportOptions" placeholder="Enter an airport code"
+          :filter-by-query="true"></autocomplete>
       </div>
       <div class="form-group">
         <label for="to">To:</label>
-        <autocomplete
-          id="to"
-          v-model="to"
-          :options="airportOptions"
-          placeholder="Enter an airport code"
-          :filter-by-query="true"
-        ></autocomplete>
+        <autocomplete id="to" v-model="to" :options="airportOptions" placeholder="Enter an airport code"
+          :filter-by-query="true"></autocomplete>
       </div>
       <div class="form-group">
         <label for="departDate">Depart:</label>
@@ -75,9 +65,14 @@ export default {
         alert('Please select both departure and destination airports.')
         return
       }
+      // Check if return date is null
+      if (!returnDate.value || !departDate.value) {
+        alert('Please select Return date & Depart date.')
+        return
+      }
       // Check if return date is after depart date
       if (returnDate.value && returnDate.value < departDate.value) {
-        alert('Return date must be after depart date.')
+        alert('Return date must be equal or after depart date.')
         return
       }
       // Check if number of passengers is valid
@@ -140,5 +135,4 @@ li {
 .autocomplete-result:first-child {
   border-top: 1px solid #ccc;
 }
-
 </style>
