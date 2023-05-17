@@ -1,0 +1,12 @@
+Step 1：下載並安裝mongoDB
+Step 2：創建名為demoDB的資料庫
+Step 3：在資料庫內新增一個名為Flight的collection
+Step 4：照著mongoDB的新手引導做如果連接的URL不是「mongodb://localhost:27017」記得複製起來去這資料夾裡database.py的第二行裡把「mongodb://localhost:27017/」覆蓋掉
+Step 5：在FastAPI_test資料夾的terminal執行「pip install -r .\FastAPI_test\requirement.txt」以下載用到的模組
+Step 6：在May_Project資料夾的terminal執行「uvicorn FastAPI_test.main:app --reload」
+Step 7-1：在瀏覽器輸入 http://127.0.0.1:8000/docs# 來使用swagger UI
+Step 7-2：也可以用Postman import 下列指令
+    curl -X 'POST' \
+    'http://127.0.0.1:8000/flights/?a_city=OSA&d_city=TPE&a_date=5%E6%9C%8829%E6%97%A5&dDate=5%E6%9C%8829%E6%97%A5' \
+    -H 'accept: application/json' \
+    -d ''

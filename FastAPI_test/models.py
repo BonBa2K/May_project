@@ -1,0 +1,81 @@
+# from sqlalchemy import Boolean, ForeignKey
+
+# # Column 是用來件資料行的Integer, String則是用來定義資料行的資料型態
+# from sqlalchemy import Column, Integer, String, Boolean, JSON
+# from sqlalchemy.orm import relationship
+# from .database import Base
+
+# # SQLAlchemy 的models是指 與數據庫交互的Class和instances。
+# # Pydantic   的models是指 數據驗證、轉換以及文檔的Class和instances。
+
+
+# class Flight_Transit(Base):
+#     __tablename__ = "flight_transit"
+#     own_Transit = relationship("flights", back_populates="transit")
+#     isCrossday = Column(Boolean)
+#     isChangeAirport = Column(Boolean)
+#     isChangeTerminal = Column(Boolean)
+#     TransitType = Column(Integer)
+#     TransferCity = Column(String)
+#     TransferSpan = Column(String)
+
+
+# # 用 Pydantic 的 model 來創建創建 FlightBase。
+# class Flight(Base):
+#     __tablename__ = "flights"
+#     id = Column(Integer, primary_key=True, index=True)
+#     # flightKey= Column(String, unique=True, index=True)
+#     flightKey = Column(String)
+#     departureDate = Column(String)
+#     departureTime = Column(String)
+#     arrivalDate = Column(String)
+#     arrivalTime = Column(String)
+#     crossDays = Column(Integer)
+#     departureCityCode = Column(String)
+#     arrivalCityCode = Column(String)
+#     departureCityName = Column(String)
+#     arrivalCityName = Column(String)
+#     departureAirportCode = Column(String)
+#     departureAirportName = Column(String)
+#     arrivalAirportCode = Column(String)
+#     arrivalAirportName = Column(String)
+#     departureTerminal = Column(String)
+#     arrivalTerminal = Column(String)
+#     stopType = Column(Integer)
+#     transit =Column(String)
+#     airlineName = Column(String)
+#     airlineFlitername = Column(String)
+#     airlineCode = Column(String)
+#     validatingAirlineCode = Column(String)
+#     seats = Column(String)
+#     flightDetails = Column(String)
+#     stuTicketGrp = Column(Boolean)
+
+
+# # make the class of table => users(*id,email,hashed_password,is_active,Item)
+# class User(Base):
+#     # __tablename__可以幫助SQLAlchemy確認要存取哪個table
+#     __tablename__ = "users"
+
+#     # 建資料行
+#     id = Column(Integer, primary_key=True, index=True)
+#     email = Column(String, unique=True, index=True)
+#     hashed_password = Column(String)
+
+
+# #    is_active = Column(Boolean, default=True)
+
+# #     建關係，back_populates是用來讓關係變成雙向的
+# #     items = relationship("Item", back_populates="owner")
+
+
+# # # make the class of table => users(*id,title,description,owner_id,owner)
+# # class Item(Base):
+# #     __tablename__ = "items"
+
+# #     id = Column(Integer, primary_key=True, index=True)
+# #     title = Column(String, index=True)
+# #     description = Column(String, index=True)
+# #     owner_id = Column(Integer, ForeignKey("users.id"))
+
+# #     owner = relationship("User", back_populates="items")
