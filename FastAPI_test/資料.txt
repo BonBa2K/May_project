@@ -1,4 +1,5 @@
-{
+[
+   {
    "flightKey":"CX407CX566",
    "departureDate":"5月29日",
    "departureTime":"08:00",
@@ -286,3 +287,290 @@
    ],
    "stuTicketGrp":false
 }
+,
+{
+  "_id": {
+    "$oid": "64623b57049781f013573eb0"
+  },
+  "airlineCode": "JL",
+  "airlineFlitername": "日本航空",
+  "airlineName": "日本航空",
+  "arrivalAirportCode": "ITM",
+  "arrivalAirportName": "大阪伊丹機場",
+  "arrivalCityCode": "OSA",
+  "arrivalCityName": "大阪",
+  "arrivalDate": "5月29日",
+  "arrivalTime": "16:05",
+  "crossDays": 0,
+  "departureAirportCode": "TSA",
+  "departureAirportName": "松山機場",
+  "departureCityCode": "TPE",
+  "departureCityName": "台北",
+  "departureDate": "5月29日",
+  "departureTerminal": "T1",
+  "departureTime": "09:10",
+  "flightDetails": [
+    {
+      "departureFullDate": "20230529",
+      "departureDate": "5月29日",
+      "arrivalDate": "5月29日",
+      "goDate": "2023-05-29",
+      "departureTime": "09:10",
+      "toDate": "2023-05-29",
+      "arrivalTime": "13:20",
+      "isRedEye": false,
+      "durationMinutes": 190,
+      "transferStayMinutes": 100,
+      "departureCity": "TPE",
+      "departureCityCode": "TPE",
+      "departureCityName": "台北",
+      "arrivalCity": "TYO",
+      "arrivalCityCode": "TYO",
+      "arrivalCityName": "東京",
+      "airlineCode": "JL",
+      "airline": "日本航空",
+      "flightNo": "JL096",
+      "operatingAirlineCode": null,
+      "operatingAirline": null,
+      "operatingFlightNo": "",
+      "craft": {
+        "craftType": "788",
+        "enName": null,
+        "widthLevel": null,
+        "minSeats": 210,
+        "maxSeats": 250,
+        "craftName": "波音 787-8"
+      },
+      "transitType": 1,
+      "departureAirportCode": "TSA",
+      "departureAirportName": "松山機場",
+      "departureTerminal": "T1",
+      "arrivalAirportCode": "HND",
+      "arrivalAirportName": "東京羽田機場",
+      "arrivalTerminal": "T3",
+      "cabinType": "tourist",
+      "cabinDesc": "經濟艙",
+      "bookingClass": "S",
+      "crossDays": 0,
+      "stopList": [],
+      "transfer": {
+        "isCrossday": false,
+        "isChangeAirport": false,
+        "isChangeTerminal": true,
+        "TransitType": 1,
+        "TransferCity": "東京",
+        "TransferSpan": "1h40m"
+      },
+      "seqNo": 1,
+      "segmentNo": 1,
+      "sequenceNo": 1,
+      "baggageStraight": 0,
+      "dterminal": "T1",
+      "aterminal": "T3",
+      "dport": "TSA",
+      "aport": "HND"
+    },
+    {
+      "departureFullDate": "20230529",
+      "departureDate": "5月29日",
+      "arrivalDate": "5月29日",
+      "goDate": "2023-05-29",
+      "departureTime": "15:00",
+      "toDate": "2023-05-29",
+      "arrivalTime": "16:05",
+      "isRedEye": false,
+      "durationMinutes": 65,
+      "transferStayMinutes": null,
+      "departureCity": "TYO",
+      "departureCityCode": "TYO",
+      "departureCityName": "東京",
+      "arrivalCity": "OSA",
+      "arrivalCityCode": "OSA",
+      "arrivalCityName": "大阪",
+      "airlineCode": "JL",
+      "airline": "日本航空",
+      "flightNo": "JL125",
+      "operatingAirlineCode": null,
+      "operatingAirline": null,
+      "operatingFlightNo": "",
+      "craft": {
+        "craftType": "788",
+        "enName": null,
+        "widthLevel": null,
+        "minSeats": 210,
+        "maxSeats": 250,
+        "craftName": "波音 787-8"
+      },
+      "transitType": 0,
+      "departureAirportCode": "HND",
+      "departureAirportName": "東京羽田機場",
+      "departureTerminal": "T1",
+      "arrivalAirportCode": "ITM",
+      "arrivalAirportName": "大阪伊丹機場",
+      "arrivalTerminal": "",
+      "cabinType": "tourist",
+      "cabinDesc": "經濟艙",
+      "bookingClass": "S",
+      "crossDays": 0,
+      "stopList": [],
+      "transfer": null,
+      "seqNo": 2,
+      "segmentNo": 1,
+      "sequenceNo": 2,
+      "baggageStraight": 0,
+      "dterminal": "T1",
+      "aterminal": "",
+      "dport": "HND",
+      "aport": "ITM"
+    }
+  ],
+  "flightKey": "JL096JL125",
+  "seats": [
+    {
+      "seatCount": 9,
+      "seatType": "Ct",
+      "feeConfirm": true,
+      "currencyCode": "TWD",
+      "price": 18688,
+      "averagePrice": 18688,
+      "averagePriceNoTax": 12361,
+      "priceWithoutTax": 12361,
+      "priceWithTax": 18688,
+      "adultPrice": 12361,
+      "adultCnt": 1,
+      "adultTax": 6327,
+      "childPrice": 0,
+      "childTax": 0,
+      "childCnt": 0,
+      "infantPrice": 0,
+      "infantTax": 0,
+      "infantCnt": 0,
+      "selectedFlightParas": "{\"OutBoundToken\":\"34488461197f9285\",\"RouteSearchToken\":\"800000010OK4m04z00O32X003-W0FfXGY4TWG5t0meXJ1880PIOKGh580000000Km0000000000061yNOe82000058000YiK0000_HXIOQwWX68000000006h\"}",
+      "selectedFlightInfo": "{\"Airline\":{\"Code\":\"JL\",\"Name\":\"日本航空\"},\"ArrivalAirport\":{\"Code\":\"ITM\",\"Name\":\"大阪伊丹機場\",\"Terminal\":\"\",\"change\":false},\"ArrivalDate\":1685347500000,\"DepartureAirport\":{\"Code\":\"TSA\",\"Name\":\"松山機場\",\"Terminal\":\"T1\",\"change\":false},\"DepartureDate\":1685322600000,\"FlightNo\":\"JL096 JL125\",\"FromAirport\":\"松山機場\",\"GoTime\":\"2023年05月29日 09:10\",\"ToAirport\":\"大阪伊丹機場\",\"ToTime\":\"2023年05月29日 16:05\",\"TransitDesc\":\"1程中轉\"}",
+      "displayCategory": 1,
+      "classType": "經濟艙",
+      "allClassType": null,
+      "engineType": "Amadeus",
+      "remarkId": "{\"adult\":1,\"channel\":\"1A-WS\",\"child\":0,\"hasChildTraveler\":false,\"journeyType\":\"RoundTrip\",\"penaltiesKey\":\"[$V2$]H4sIAAAAAAAAAO1VTY/bRBiO7bTamBZSc6GWilqfIErQeJJ47ZySTXbbZEM2xIZQIZAmzjgdKRsb2ylEqLBHJH4BHBASF65IIPEP+Cnc+AdIvDN2kt1tKWckcnDmeT+eeb9mRr2nlkyEED60bKSVG3MTOw617Eb90Jr5De2v19QbZqc2dbVSJwjYkpGU6jdtq3nYqBt/vHogafJgqP8qqRpfTjy9eCCVJfjKZVn7XlKVTs/T+OcNySiDieJNe3cL8Lu4+3u78iZIJFc/cIcjNLJ7x4YynvQrGXzYOwa9/C96RZM+eJm++DJ/41tZhZi1rgjM7ejKo1HPgIQqr2OE6zXUrGHHQ07LRC0o0WWhWW9hLmzdGAyRY7UlIJE17q8rfe/d50jMJje+TmK1UDMnMXETSHqQkHLa/1BXRhPvMolVQ6Zn4mxTfEVYbzVFJDcHQws62ZYhlKLGCXTFGx8/z2JfzUcIgbe5DcVGTluufCcBS0EvAcXUxPZRv/J13s4L+Ic2ardV+dHgDm9mob1oX4YFKqA3zbVfCejm8OLLTHuawR+WAj5+L4N//izgWT83/qQt5qXwzW/tB9sFvqPeSqIlSyOyOaerVJNO8C8l9VZEV2SZMpqc0o32Y+kLY84SMlvSbhqzaCyUG6MVkGVCqwYYrzYTGqxX851s8dQjix1KnoRRxFaL99cMTAzHOqRkVg9qJpkFtYZv4Zozt6yaY1GQz1ATI9uoGtzWrNtVI/BPSEyHLEmN1kcQC41InHYZD8Hgjanmoh6cKRDtB+P+duTAhMQxe0pzrzO3A6KELnjS3XC9AmbMBSTtLkmSgIlrZPhhTOac9TFgn5PQGNBgCDCAqI5IwoT59ihUjZTELAhGIUjhlPCtfZ9v0Q0FUe6422d7pKpGvF5S4YZhqACHMVuwlben41UJfJd+CoWBuq+3qzwRboPAIgxhyUsBIA7XKVQ+V4WfxalYRFAMqFbGve9kzHzu9g7Kk9tMIKSd+pytxuRz4Q/zIHLijdnpyXlWSeEf0dine8SZpyx9AuH0ct9c5ZMUIfuE0svYuYpNvMezUAwaela9NgpZU18wCvxg3t+e+eujkA3Qf3kU8P+j8PEzrKm3+8l4fxXxq6ysvsKSEV10RDQgqTyAF+qeWvSmXVfjl3p2s+/v5reK+G3xiHEVHyi49FuSe7R7+QaSPSnypvwkSWAKT9UZf+/y9+EfTf8GPfVMEB8IAAA=\",\"routeSearchToken\":\"800000010OK4m04z00O32X003-W0FfXGY4TWG5t0meXJ1880PIOKGh580000000Km0000000000061yNOe82000058000YiK0000_HXIOQwWX68000000006h\",\"searchCriteriaToken\":\"KLUv_QBQuQIACwgBEJSoARjPKSCA8LemhjEMCwgCEM8pGJSoASCAmISihzEMEwgBEAEYARQYASACKA0wz-s0QygAMAA4AEAASABQAIABAJABAKgBALgBAERIAFAAYNJG\",\"searchInTw\":false}",
+      "fareInfo": null,
+      "planCategory": "CTRIP_PRIORITIZING",
+      "resourceName": "線上專賣",
+      "resourceDesc": "由海外供應商提供",
+      "freeBaggage": 3,
+      "productDesc": "由海外供應商提供",
+      "ticketingDesc": "付款後1小時出票",
+      "ticketingCode": 1,
+      "ageRestriction": "",
+      "passportTag": null,
+      "companionFare": null,
+      "combineTag": null,
+      "FarePenaltiesFlag": 1,
+      "FarePenalties": {
+        "baggageFormats": [
+          {
+            "segmentNo": 1,
+            "sequenceNo": null,
+            "fromCity": {
+              "code": "TPE",
+              "country": null,
+              "lineType": null,
+              "Name": "台北"
+            },
+            "toCity": {
+              "code": "OSA",
+              "country": null,
+              "lineType": null,
+              "Name": "大阪"
+            },
+            "passengerType": "Adult",
+            "checkInBaggage": {
+              "weight": 23,
+              "unit": "N",
+              "piece": 2,
+              "size": "203CM",
+              "sizeType": 1,
+              "text": "每人2件，每件23公斤，每件三邊之和不可超過203CM。"
+            },
+            "carryOnBaggage": {
+              "weight": 10,
+              "unit": "N",
+              "piece": 1,
+              "size": "55*40*25CM",
+              "sizeType": 2,
+              "text": "每人1件，每件10公斤，每件三邊不可超過55*40*25CM。"
+            },
+            "route": null
+          },
+          {
+            "segmentNo": 2,
+            "sequenceNo": null,
+            "fromCity": {
+              "code": "OSA",
+              "country": null,
+              "lineType": null,
+              "Name": "大阪"
+            },
+            "toCity": {
+              "code": "TPE",
+              "country": null,
+              "lineType": null,
+              "Name": "台北"
+            },
+            "passengerType": "Adult",
+            "checkInBaggage": {
+              "weight": 23,
+              "unit": "N",
+              "piece": 2,
+              "size": "203CM",
+              "sizeType": 1,
+              "text": "每人2件，每件23公斤，每件三邊之和不可超過203CM。"
+            },
+            "carryOnBaggage": {
+              "weight": -1,
+              "unit": "N",
+              "piece": 1,
+              "size": "56*36*23CM",
+              "sizeType": 2,
+              "text": "每人1件，每件三邊不可超過56*36*23CM。"
+            },
+            "route": null
+          }
+        ],
+        "penaltyFormat": null,
+        "baggageTag": "行李每成人2*23KG",
+        "penaltyFlag": 0,
+        "penaltyTag": null,
+        "FarePenaltiesFlag": 1,
+        "Penalties": null,
+        "Baggages": [
+          {
+            "Segment": "1",
+            "Text": "TPE-TYO: 成人:2件, 每件不超过23公斤 ；|TYO-OSA: 成人:2件, 每件不超过23公斤 ；---1:2114"
+          },
+          {
+            "Segment": "2",
+            "Text": "OSA-TYO: 成人:2件, 每件不超过23公斤 ；|TYO-TPE: 成人:2件, 每件不超过23公斤 ；---1:2114"
+          }
+        ],
+        "NationDisallowed": "",
+        "NationAllowed": "",
+        "CityAllowed": "",
+        "Remark": null
+      },
+      "easeTag": null,
+      "ticketType": null,
+      "license": null
+    }
+  ],
+  "stopType": 1,
+  "stuTicketGrp": false,
+  "transit": {
+    "TransferCity": "東京",
+    "TransferSpan": "1h40m",
+    "TransitType": 1,
+    "isChangeAirport": false,
+    "isChangeTerminal": true,
+    "isCrossday": false
+  },
+  "validatingAirlineCode": "JL"
+}]
