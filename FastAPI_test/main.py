@@ -27,7 +27,7 @@ def read_flights_from_airline_code(s_code: str):
         return Ans
 
 
-@app.get("/flights_oid/{o_id}", tags=["FlightGet"], response_model=schemas.Flight)
+@app.post("/flights_oid/{o_id}", tags=["FlightGet"], response_model=schemas.Flight)
 def read_flights_from_oid(o_id: str):
     Ans = crud.get_flight_from_oid(id_in=o_id)
     print("Ans == ")
