@@ -27,12 +27,12 @@ def get_flight_from_oid(id_in: str):
 
 
 def post_flight_from_multi(
-    arrivalCity: str, departureCity: str, aDate: str, dDate: str
+    arrival_AC: str, departure_AC: str, aDate: str, dDate: str
 ):
     x = mycol.find(
         {
-            "arrivalCityCode": arrivalCity,
-            "departureCityCode": departureCity,
+            "arrivalAirportCode": arrival_AC,
+            "departureAirportCode": departure_AC,
             "arrivalDate": aDate,
             "departureDate": dDate,
         }

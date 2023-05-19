@@ -81,9 +81,9 @@ def read_seat_from_oid(o_id: str):
 
 
 @app.post("/flights/", tags=["FlightGet"], response_model=list[schemas.Flight])
-def read_flight_from_multi(a_city: str, d_city: str, a_date: str, dDate: str):
+def read_flight_from_multi(a_AC: str, d_AC: str, a_date: str, dDate: str):
     Ans = crud.post_flight_from_multi(
-        arrivalCity=a_city, departureCity=d_city, aDate=a_date, dDate=dDate
+        arrival_AC=a_AC, departure_AC=d_AC, aDate=a_date, dDate=dDate
     )
     if len(list(Ans)) == 0:
         raise HTTPException(status_code=404, detail="Flight cannot found")
