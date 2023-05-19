@@ -1,4 +1,4 @@
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException, Request
 
 from . import crud, schemas
 from .database import mydb, dblst
@@ -15,10 +15,13 @@ tags_metadata = [
 ]
 app = FastAPI(openapi_tags=tags_metadata)
 
+@app.middleware("http")
+async def addmiddleware(request: Request, call_next):
+    print("Middleware works!")
+    response = await call_next(request)
+    return response
 
-@app.get(
-    "/flights_sc/{s_code}", tags=["FlightGet"], response_model=list[schemas.Flight]
-)
+@app.get("/flights_sc/{s_code}", tags=["FlightGet"], response_model=list[schemas.Flight])
 def read_flights_from_airline_code(s_code: str):
     Ans = crud.get_flight_from_airline_code(searchCode=s_code)
     if len(list(Ans)) == 0:
