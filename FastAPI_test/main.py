@@ -23,9 +23,19 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/flights_sc/{s_code}", tags=["FlightGet"], response_model=list[schemas.Flight])
 def read_flights_from_airline_code(s_code: str):
     Ans = crud.get_flight_from_airline_code(searchCode=s_code)
+    if len(list(Ans)) == 0:
+        raise HTTPException(status_code=404, detail="Flight cannot found")
+    else:
+        return Ans
+
+
+@app.post("/flights_ac/{s_code}", tags=["FlightGet"], response_model=list[schemas.Flight])
+def read_flights_from_airport_code(arrival_code: str, departure_code: str):
+    Ans = crud.get_flight_from_airport_code(arrivalAC=arrival_code, departureAC=departure_code)
     if len(list(Ans)) == 0:
         raise HTTPException(status_code=404, detail="Flight cannot found")
     else:
