@@ -15,11 +15,13 @@ tags_metadata = [
 ]
 app = FastAPI(openapi_tags=tags_metadata)
 
-@app.middleware("http")
-async def addmiddleware(request: Request, call_next):
-    print("Middleware works!")
-    response = await call_next(request)
-    return response
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/flights_sc/{s_code}", tags=["FlightGet"], response_model=list[schemas.Flight])
 def read_flights_from_airline_code(s_code: str):
