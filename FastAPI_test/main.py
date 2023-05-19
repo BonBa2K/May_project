@@ -1,5 +1,5 @@
 from fastapi import Depends, FastAPI, HTTPException, Request
-
+from starlette.middleware.cors import CORSMiddleware
 from . import crud, schemas
 from .database import mydb, dblst
 
