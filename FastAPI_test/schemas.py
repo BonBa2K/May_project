@@ -146,6 +146,7 @@ class Flight(BaseModel):
         orm_mode = True
 
 class useful_F_data(BaseModel):
+    id_in:Optional[str]
     airlineName:Optional[str]
     arrivalAirportCode:Optional[str]
     arrivalAirportName:Optional[str]

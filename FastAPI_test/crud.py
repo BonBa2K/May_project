@@ -42,10 +42,9 @@ def post_flight_multi(arrival_AC: str, departure_AC: str, aDate: str, dDate: str
         flightNo_tmp = []
         for FD in ele["flightDetails"]:
             flightNo_tmp.append(FD["flightNo"])
-        print("flightNo_tmp == ")
-        print(flightNo_tmp)
         Ans.append(
             schemas.useful_F_data(
+                id_in=str(ele["_id"]),
                 airlineName=ele["airlineName"],
                 arrivalAirportCode=ele["arrivalAirportCode"],
                 arrivalAirportName=ele["arrivalAirportName"],
