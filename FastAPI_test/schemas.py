@@ -4,6 +4,12 @@ from pydantic.schema import Optional
 from bson.objectid import ObjectId
 from .F_seats_sub_schema import Flight_seats_FP
 
+class mult_param(BaseModel):
+    a_AC: str
+    d_AC: str
+    a_date: str
+    d_date: str
+
 # 座位資訊
 class Flight_seats(BaseModel):
     seatCount:Optional[int]

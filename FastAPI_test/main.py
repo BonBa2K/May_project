@@ -23,7 +23,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 @app.get(
     "/flights_sc/{s_code}", tags=["FlightGet"], response_model=list[schemas.Flight]
 )
@@ -35,9 +34,9 @@ def read_flights_from_airline_code(s_code: str):
         return Ans
 
 @app.post("/flights/", tags=["FlightGet"], response_model=list[schemas.useful_F_data])
-def read_flight_multi(a_AC: str, d_AC: str, a_date: str, d_date: str):
+def read_flight_multi(param_in: schemas.mult_param):
     Ans = crud.post_flight_multi(
-        arrival_AC=a_AC, departure_AC=d_AC, aDate=a_date, dDate=d_date
+        arrival_AC=param_in.a_AC, departure_AC=param_in.d_AC, aDate=param_in.a_date, dDate=param_in.d_date
     )
     if len(list(Ans)) == 0:
         raise HTTPException(status_code=404, detail="Flight cannot found")
@@ -45,9 +44,9 @@ def read_flight_multi(a_AC: str, d_AC: str, a_date: str, d_date: str):
         return Ans
 
 @app.post("/flights_all/", tags=["FlightGet"], response_model=list[schemas.Flight])
-def read_flight_multi_all(a_AC: str, d_AC: str, a_date: str, d_date: str):
+def read_flight_multi_all(param_in: schemas.mult_param):
     Ans = crud.post_flight_multi_all(
-        arrival_AC=a_AC, departure_AC=d_AC, aDate=a_date, dDate=d_date
+        arrival_AC=param_in.a_AC, departure_AC=param_in.d_AC, aDate=param_in.a_date, dDate=param_in.d_date
     )
     print("Ans == ")
     print(Ans)
