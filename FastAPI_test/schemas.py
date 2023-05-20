@@ -115,7 +115,7 @@ class Flight_FD(BaseModel):
     aport : Optional[str]
 
 # 航班資料
-class FlightBase(BaseModel):
+class Flight(BaseModel):
     _id:Optional[ObjectId]
     airlineCode:Optional[str]
     airlineFlitername:Optional[str]
@@ -135,16 +135,29 @@ class FlightBase(BaseModel):
     departureDate:Optional[str]
     departureTerminal:Optional[str]
     departureTime:Optional[str]
+    flightDetails:Optional[list[Flight_FD]]
     flightKey:Optional[str]
+    seats:Optional[list[Flight_seats]]
     stopType:Optional[int]
     stuTicketGrp:Optional[bool]
+    transit:Optional[Flight_transfer]
     validatingAirlineCode:Optional[str]
-
-class Flight(FlightBase):
     class Config:
         orm_mode = True
 
-
+class useful_F_data(BaseModel):
+    airlineName:Optional[str]
+    arrivalAirportCode:Optional[str]
+    arrivalAirportName:Optional[str]
+    arrivalCityName:Optional[str]
+    arrivalDate:Optional[str]
+    arrivalTime:Optional[str]
+    departureAirportCode:Optional[str]
+    departureAirportName:Optional[str]
+    departureCityName:Optional[str]
+    departureDate:Optional[str]
+    departureTime:Optional[str]
+    flightNo : Optional[list[str]]
 
 # 使用者資料
 class UserBase(BaseModel):

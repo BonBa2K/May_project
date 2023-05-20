@@ -13,8 +13,10 @@ def get_flight_from_airline_code(searchCode: str):
     return Ans
 
 
-def get_flight_from_airport_code(arrivalAC: str,departureAC: str):
-    x = mycol.find({"arrivalAirportCode": arrivalAC,"departureAirportCode": departureAC})
+def get_flight_from_airport_code(arrivalAC: str, departureAC: str):
+    x = mycol.find(
+        {"arrivalAirportCode": arrivalAC, "departureAirportCode": departureAC}
+    )
     Ans = []
     for ele in x:
         Ans.append(ele)
@@ -26,9 +28,42 @@ def get_flight_from_oid(id_in: str):
     return ele
 
 
-def post_flight_from_multi(
-    arrival_AC: str, departure_AC: str, aDate: str, dDate: str
-):
+def post_flight_multi(arrival_AC: str, departure_AC: str, aDate: str, dDate: str):
+    x = mycol.find(
+        {
+            "arrivalAirportCode": arrival_AC,
+            "departureAirportCode": departure_AC,
+            "arrivalDate": aDate,
+            "departureDate": dDate,
+        }
+    )
+    Ans = []
+    for ele in x:
+        flightNo_tmp = []
+        for FD in ele["flightDetails"]:
+            flightNo_tmp.append(FD["flightNo"])
+        print("flightNo_tmp == ")
+        print(flightNo_tmp)
+        Ans.append(
+            schemas.useful_F_data(
+                airlineName=ele["airlineName"],
+                arrivalAirportCode=ele["arrivalAirportCode"],
+                arrivalAirportName=ele["arrivalAirportName"],
+                arrivalCityName=ele["arrivalCityName"],
+                arrivalDate=ele["arrivalDate"],
+                arrivalTime=ele["arrivalTime"],
+                departureAirportCode=ele["departureAirportCode"],
+                departureAirportName=ele["departureAirportName"],
+                departureCityName=ele["departureCityName"],
+                departureDate=ele["departureDate"],
+                departureTime=ele["departureTime"],
+                flightNo=flightNo_tmp,
+            )
+        )
+    return Ans
+
+
+def post_flight_multi_all(arrival_AC: str, departure_AC: str, aDate: str, dDate: str):
     x = mycol.find(
         {
             "arrivalAirportCode": arrival_AC,

@@ -24,7 +24,9 @@ app.add_middleware(
 )
 
 
-@app.get("/flights_sc/{s_code}", tags=["FlightGet"], response_model=list[schemas.Flight])
+@app.get(
+    "/flights_sc/{s_code}", tags=["FlightGet"], response_model=list[schemas.Flight]
+)
 def read_flights_from_airline_code(s_code: str):
     Ans = crud.get_flight_from_airline_code(searchCode=s_code)
     if len(list(Ans)) == 0:
@@ -32,19 +34,21 @@ def read_flights_from_airline_code(s_code: str):
     else:
         return Ans
 
-
-@app.post("/flights_ac/{s_code}", tags=["FlightGet"], response_model=list[schemas.Flight])
-def read_flights_from_airport_code(arrival_code: str, departure_code: str):
-    Ans = crud.get_flight_from_airport_code(arrivalAC=arrival_code, departureAC=departure_code)
+@app.post("/flights/", tags=["FlightGet"], response_model=list[schemas.useful_F_data])
+def read_flight_multi(a_AC: str, d_AC: str, a_date: str, d_date: str):
+    Ans = crud.post_flight_multi(
+        arrival_AC=a_AC, departure_AC=d_AC, aDate=a_date, dDate=d_date
+    )
     if len(list(Ans)) == 0:
         raise HTTPException(status_code=404, detail="Flight cannot found")
     else:
         return Ans
 
-
-@app.post("/flights_oid/{o_id}", tags=["FlightGet"], response_model=schemas.Flight)
-def read_flights_from_oid(o_id: str):
-    Ans = crud.get_flight_from_oid(id_in=o_id)
+@app.post("/flights_all/", tags=["FlightGet"], response_model=list[schemas.Flight])
+def read_flight_multi_all(a_AC: str, d_AC: str, a_date: str, d_date: str):
+    Ans = crud.post_flight_multi_all(
+        arrival_AC=a_AC, departure_AC=d_AC, aDate=a_date, dDate=d_date
+    )
     print("Ans == ")
     print(Ans)
     if len(list(Ans)) == 0:
@@ -53,39 +57,50 @@ def read_flights_from_oid(o_id: str):
         return Ans
 
 
-@app.post("/FD_oid/", tags=["FlightGet"], response_model=list[schemas.Flight_FD])
-def read_FD_from_oid(o_id: str):
-    Ans = crud.post_FD_from_oid(id_in=o_id)
-    if len(list(Ans)) == 0:
-        raise HTTPException(status_code=404, detail="Flight cannot found")
-    else:
-        return Ans
+# @app.post("/flights_ac/", tags=["FlightGet"], response_model=list[schemas.Flight])
+# def read_flights_from_airport_code(arrival_code: str, departure_code: str):
+#     Ans = crud.get_flight_from_airport_code(
+#         arrivalAC=arrival_code, departureAC=departure_code
+#     )
+#     if len(list(Ans)) == 0:
+#         raise HTTPException(status_code=404, detail="Flight cannot found")
+#     else:
+#         return Ans
 
 
-@app.post("/tran_oid/", tags=["FlightGet"], response_model=schemas.Flight_transfer)
-def read_tran_from_oid(o_id: str):
-    Ans = crud.post_tran_from_oid(id_in=o_id)
-    if len(list(Ans)) == 0:
-        raise HTTPException(status_code=404, detail="Flight cannot found")
-    else:
-        return Ans
+# @app.post("/flights_oid/", tags=["FlightGet"], response_model=schemas.Flight)
+# def read_flights_from_oid(o_id: str):
+#     Ans = crud.get_flight_from_oid(id_in=o_id)
+#     print("Ans == ")
+#     print(Ans)
+#     if len(list(Ans)) == 0:
+#         raise HTTPException(status_code=404, detail="Flight cannot found")
+#     else:
+#         return Ans
 
 
-@app.post("/seats_oid/", tags=["FlightGet"], response_model=list[schemas.Flight_seats])
-def read_seat_from_oid(o_id: str):
-    Ans = crud.post_seat_from_oid(id_in=o_id)
-    if len(list(Ans)) == 0:
-        raise HTTPException(status_code=404, detail="Flight cannot found")
-    else:
-        return Ans
+# @app.post("/FD_oid/", tags=["FlightGet"], response_model=list[schemas.Flight_FD])
+# def read_FD_from_oid(o_id: str):
+#     Ans = crud.post_FD_from_oid(id_in=o_id)
+#     if len(list(Ans)) == 0:
+#         raise HTTPException(status_code=404, detail="Flight cannot found")
+#     else:
+#         return Ans
 
 
-@app.post("/flights/", tags=["FlightGet"], response_model=list[schemas.Flight])
-def read_flight_from_multi(a_AC: str, d_AC: str, a_date: str, dDate: str):
-    Ans = crud.post_flight_from_multi(
-        arrival_AC=a_AC, departure_AC=d_AC, aDate=a_date, dDate=dDate
-    )
-    if len(list(Ans)) == 0:
-        raise HTTPException(status_code=404, detail="Flight cannot found")
-    else:
-        return Ans
+# @app.post("/tran_oid/", tags=["FlightGet"], response_model=schemas.Flight_transfer)
+# def read_tran_from_oid(o_id: str):
+#     Ans = crud.post_tran_from_oid(id_in=o_id)
+#     if len(list(Ans)) == 0:
+#         raise HTTPException(status_code=404, detail="Flight cannot found")
+#     else:
+#         return Ans
+
+
+# @app.post("/seats_oid/", tags=["FlightGet"], response_model=list[schemas.Flight_seats])
+# def read_seat_from_oid(o_id: str):
+#     Ans = crud.post_seat_from_oid(id_in=o_id)
+#     if len(list(Ans)) == 0:
+#         raise HTTPException(status_code=404, detail="Flight cannot found")
+#     else:
+#         return Ans
