@@ -28,12 +28,11 @@ def get_flight_from_oid(id_in: str):
     return ele
 
 
-def post_flight_multi(arrival_AC: str, departure_AC: str, aDate: str, dDate: str):
+def post_flight_multi(arrival_AC: str, departure_AC: str, dDate: str):
     x = mycol.find(
         {
             "arrivalAirportCode": arrival_AC,
             "departureAirportCode": departure_AC,
-            "arrivalDate": aDate,
             "departureDate": dDate,
         }
     )
@@ -62,12 +61,11 @@ def post_flight_multi(arrival_AC: str, departure_AC: str, aDate: str, dDate: str
     return Ans
 
 
-def post_flight_multi_all(arrival_AC: str, departure_AC: str, aDate: str, dDate: str):
+def post_flight_multi_all(arrival_AC: str, departure_AC: str, dDate: str):
     x = mycol.find(
         {
             "arrivalAirportCode": arrival_AC,
             "departureAirportCode": departure_AC,
-            "arrivalDate": aDate,
             "departureDate": dDate,
         }
     )

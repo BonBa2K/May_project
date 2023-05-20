@@ -36,7 +36,7 @@ def read_flights_from_airline_code(s_code: str):
 @app.post("/flights/", tags=["FlightGet"], response_model=list[schemas.useful_F_data])
 def read_flight_multi(param_in: schemas.mult_param):
     Ans = crud.post_flight_multi(
-        arrival_AC=param_in.a_AC, departure_AC=param_in.d_AC, aDate=param_in.a_date, dDate=param_in.d_date
+        arrival_AC=param_in.a_AC, departure_AC=param_in.d_AC, dDate=param_in.d_date
     )
     if len(list(Ans)) == 0:
         raise HTTPException(status_code=404, detail="Flight cannot found")
@@ -46,10 +46,8 @@ def read_flight_multi(param_in: schemas.mult_param):
 @app.post("/flights_all/", tags=["FlightGet"], response_model=list[schemas.Flight])
 def read_flight_multi_all(param_in: schemas.mult_param):
     Ans = crud.post_flight_multi_all(
-        arrival_AC=param_in.a_AC, departure_AC=param_in.d_AC, aDate=param_in.a_date, dDate=param_in.d_date
+        arrival_AC=param_in.a_AC, departure_AC=param_in.d_AC, dDate=param_in.d_date
     )
-    print("Ans == ")
-    print(Ans)
     if len(list(Ans)) == 0:
         raise HTTPException(status_code=404, detail="Flight cannot found")
     else:
