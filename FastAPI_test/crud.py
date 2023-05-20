@@ -38,9 +38,17 @@ def post_flight_multi(arrival_AC: str, departure_AC: str, dDate: str):
     )
     Ans = []
     for ele in x:
-        flightNo_tmp = []
+        flightNo_tmp_1 = []
+        flightNo_tmp_2 = []
+        price_tmp = []
         for FD in ele["flightDetails"]:
-            flightNo_tmp.append(FD["flightNo"])
+            flightNo_tmp_2.append(FD["flightNo"])
+
+        flightNo_tmp_1.append(flightNo_tmp_2)
+        
+        for seatIn in ele["seats"]:
+            price_tmp.append(seatIn["price"])
+
         Ans.append(
             schemas.useful_F_data(
                 id_in=str(ele["_id"]),
@@ -55,7 +63,8 @@ def post_flight_multi(arrival_AC: str, departure_AC: str, dDate: str):
                 departureCityName=ele["departureCityName"],
                 departureDate=ele["departureDate"],
                 departureTime=ele["departureTime"],
-                flightNo=flightNo_tmp,
+                flightNo=flightNo_tmp_1,
+                price=price_tmp,
             )
         )
     return Ans

@@ -163,7 +163,8 @@ class useful_F_data(BaseModel):
     departureCityName:Optional[str]
     departureDate:Optional[str]
     departureTime:Optional[str]
-    flightNo : Optional[list[str]]
+    price:Optional[list[int]]
+    flightNo : Optional[list[list[str]]]
 
 # 使用者資料
 class UserBase(BaseModel):
