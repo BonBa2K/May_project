@@ -9,6 +9,15 @@ class mult_param(BaseModel):
     d_AC: str
     d_date: str
 
+class trend_param(BaseModel):
+    mon: str
+    ori: str
+    dest: str
+
+class LogIn_param(BaseModel):
+    UserName: str
+    Password: str
+
 # 座位資訊
 class Flight_seats(BaseModel):
     seatCount:Optional[int]

@@ -4,14 +4,9 @@ from . import crud, schemas
 from .database import mydb, dblst
 
 tags_metadata = [
-    {"name": "FlightGet"},
-    # {"name": "FlightPost"},
-    # {"name": "FlightPut"},
-    # {"name": "FlightDelete"},
-    # {"name": "UserGet"},
-    # {"name": "UserPost"},
-    # {"name": "UserPut"},
-    # {"name": "UserDelete"},
+    {"name": "Flight"},
+    {"name": "Trend"},
+    {"name": "LogIn"},
 ]
 app = FastAPI(openapi_tags=tags_metadata)
 
@@ -23,8 +18,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.post("/LogIn/", tags=["LogIn"], response_model=str)
+def LogIn(param_in: schemas.LogIn_param):
+    Ans = crud.post_LogIn(UN=param_in.UserName, PW=param_in.Password)
+    if len(list(Ans)) == 0:
+        raise HTTPException(status_code=404, detail="Flight cannot found")
+    else:
+        return Ans
+    
 @app.get(
-    "/flights_sc/{s_code}", tags=["FlightGet"], response_model=list[schemas.Flight]
+    "/flights_sc/{s_code}", tags=["Flight"], response_model=list[schemas.Flight]
 )
 def read_flights_from_airline_code(s_code: str):
     Ans = crud.get_flight_from_airline_code(searchCode=s_code)
@@ -33,7 +36,7 @@ def read_flights_from_airline_code(s_code: str):
     else:
         return Ans
 
-@app.post("/flights/", tags=["FlightGet"], response_model=list[schemas.useful_F_data])
+@app.post("/flights/", tags=["Flight"], response_model=list[schemas.useful_F_data])
 def read_flight_multi(param_in: schemas.mult_param):
     Ans = crud.post_flight_multi(
         arrival_AC=param_in.a_AC, departure_AC=param_in.d_AC, dDate=param_in.d_date
@@ -43,7 +46,7 @@ def read_flight_multi(param_in: schemas.mult_param):
     else:
         return Ans
 
-@app.post("/flights_all/", tags=["FlightGet"], response_model=list[schemas.Flight])
+@app.post("/flights_all/", tags=["Flight"], response_model=list[schemas.Flight])
 def read_flight_multi_all(param_in: schemas.mult_param):
     Ans = crud.post_flight_multi_all(
         arrival_AC=param_in.a_AC, departure_AC=param_in.d_AC, dDate=param_in.d_date
@@ -52,9 +55,20 @@ def read_flight_multi_all(param_in: schemas.mult_param):
         raise HTTPException(status_code=404, detail="Flight cannot found")
     else:
         return Ans
+    
+@app.post("/chartData/", tags=["Trend"], response_model=list[int])
+def read_trend_price(param_in: schemas.trend_param):
+    Ans = crud.post_trend_price(
+        month=param_in.mon, origin=param_in.ori, destination=param_in.dest
+    )
+    if len(list(Ans)) == 0:
+        raise HTTPException(status_code=404, detail="Flight cannot found")
+    else:
+        return Ans
+    
 
 
-# @app.post("/flights_ac/", tags=["FlightGet"], response_model=list[schemas.Flight])
+# @app.post("/flights_ac/", tags=["Flight"], response_model=list[schemas.Flight])
 # def read_flights_from_airport_code(arrival_code: str, departure_code: str):
 #     Ans = crud.get_flight_from_airport_code(
 #         arrivalAC=arrival_code, departureAC=departure_code
@@ -65,7 +79,7 @@ def read_flight_multi_all(param_in: schemas.mult_param):
 #         return Ans
 
 
-# @app.post("/flights_oid/", tags=["FlightGet"], response_model=schemas.Flight)
+# @app.post("/flights_oid/", tags=["Flight"], response_model=schemas.Flight)
 # def read_flights_from_oid(o_id: str):
 #     Ans = crud.get_flight_from_oid(id_in=o_id)
 #     print("Ans == ")
@@ -76,7 +90,7 @@ def read_flight_multi_all(param_in: schemas.mult_param):
 #         return Ans
 
 
-# @app.post("/FD_oid/", tags=["FlightGet"], response_model=list[schemas.Flight_FD])
+# @app.post("/FD_oid/", tags=["Flight"], response_model=list[schemas.Flight_FD])
 # def read_FD_from_oid(o_id: str):
 #     Ans = crud.post_FD_from_oid(id_in=o_id)
 #     if len(list(Ans)) == 0:
@@ -85,7 +99,7 @@ def read_flight_multi_all(param_in: schemas.mult_param):
 #         return Ans
 
 
-# @app.post("/tran_oid/", tags=["FlightGet"], response_model=schemas.Flight_transfer)
+# @app.post("/tran_oid/", tags=["Flight"], response_model=schemas.Flight_transfer)
 # def read_tran_from_oid(o_id: str):
 #     Ans = crud.post_tran_from_oid(id_in=o_id)
 #     if len(list(Ans)) == 0:
@@ -94,7 +108,7 @@ def read_flight_multi_all(param_in: schemas.mult_param):
 #         return Ans
 
 
-# @app.post("/seats_oid/", tags=["FlightGet"], response_model=list[schemas.Flight_seats])
+# @app.post("/seats_oid/", tags=["Flight"], response_model=list[schemas.Flight_seats])
 # def read_seat_from_oid(o_id: str):
 #     Ans = crud.post_seat_from_oid(id_in=o_id)
 #     if len(list(Ans)) == 0:

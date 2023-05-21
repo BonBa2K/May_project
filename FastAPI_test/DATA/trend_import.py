@@ -13,7 +13,7 @@ import csv
 import pymongo
 
 # pick the trend data you want
-with open("./DATA/trendfukuoka.csv", newline="") as csvfile:
+with open("./trendfukuoka.csv", newline="") as csvfile:
     reader = csv.DictReader(csvfile)
     temp = []
     for row in reader:
