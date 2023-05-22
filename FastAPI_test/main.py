@@ -2,6 +2,7 @@ from fastapi import Depends, FastAPI, HTTPException, Request
 from starlette.middleware.cors import CORSMiddleware
 from . import crud, schemas
 from .database import mydb, dblst
+from pydantic.schema import Optional
 
 tags_metadata = [
     {"name": "Flight"},
@@ -56,7 +57,7 @@ def read_flight_multi_all(param_in: schemas.mult_param):
     else:
         return Ans
     
-@app.post("/chartData/", tags=["Trend"], response_model=list[int])
+@app.post("/chartData/", tags=["Trend"], response_model=list[Optional[int]])
 def read_trend_price(param_in: schemas.trend_param):
     Ans = crud.post_trend_price(
         month=param_in.mon, origin=param_in.ori, destination=param_in.dest
