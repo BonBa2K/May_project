@@ -1,32 +1,28 @@
-# import requests
+from datetime import date
+d = date.today() # 730920th day after 1. 1. 0001
+print("d == ")
+print(d)
 
-# url = 'http://127.0.0.1:8000/flights/'
-# myobj = {"arrivalAirportCode": "KIX","departureAirportCode": "TPE","departureDate": "5月29日","arrivalDate": "5月30日",}
+# Methods related to formatting string output
+print("d.isoformat()")
+print(d.isoformat())
+print("d.strftime(\"%d/%m/%y\")")
+print(d.strftime("%d/%m/%y"))
+print("d.strftime(\"%A %d. %B %Y\")")
+print(d.strftime("%A %d. %B %Y"))
+print("d.ctime()")
+print(d.ctime())
 
-# x = requests.post(url, json = myobj)
+# Methods for to extracting 'components' under different calendars
+t = d.timetuple()
+for i in t:     
+    print("i == ")
+    print(i)
 
-# print("x.text")
-# print(x.text)
-# ----------------------------------------------------------------------
-
-import csv
-import pymongo
-
-# pick the trend data you want
-with open("./DATA/trendfukuoka.csv", newline="") as csvfile:
-    reader = csv.DictReader(csvfile)
-    temp = []
-    for row in reader:
-        print(row["outboundDate"], int(row["price"]))
-        temp.append({"outboundDate": row["outboundDate"], "price": int(row["price"])})
-    print('temp[0]["price"] == ')
-    print(temp[0]["price"])
-
-
-myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-mydb = myclient["demoDB"]
-mycol = mydb["TrendData"]
-# change the destination of data
-mydict = {"TD": temp, "destination": "fukuoka"}
-
-x = mycol.insert_one(mydict)
+ic = d.isocalendar()
+for i in ic:    
+    print("i == ")
+    print(i)
+d.replace(year=2005)
+print("d == ")
+print(d)
