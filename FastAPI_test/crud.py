@@ -4,14 +4,14 @@ from bson.objectid import ObjectId
 
 mycol = mydb["Flight"]
 
-def post_LogIn(UN:str, PW:str):
-    UserCol=mydb["UserTest"]
-    x = UserCol.find({"username": UN,"password": PW})
+
+def post_LogIn(UN: str, PW: str):
+    UserCol = mydb["UserTest"]
+    x = UserCol.find({"username": UN, "password": PW})
     Ans = []
     for ele in x:
         Ans.append(ele)
     return "good"
-
 
 
 def get_flight_from_airline_code(searchCode: str):
@@ -46,17 +46,17 @@ def post_flight_multi(arrival_AC: str, departure_AC: str, dDate: str):
     )
     Ans = []
     for ele in x:
-        if ele["flightDetails"][0]["goDate"]==dDate:
+        if ele["flightDetails"][0]["goDate"] == dDate:
             flightNo_tmp_1 = []
             flightNo_tmp_2 = []
             price_tmp = []
-            arriveD=""
-            
+            arriveD = ""
+
             for seatIn in ele["seats"]:
                 price_tmp.append(seatIn["price"])
 
             for el in ele["flightDetails"]:
-                arriveD=el["toDate"]
+                arriveD = el["toDate"]
 
             for FD in ele["flightDetails"]:
                 flightNo_tmp_2.append(FD["flightNo"])
@@ -84,16 +84,17 @@ def post_flight_multi(arrival_AC: str, departure_AC: str, dDate: str):
     return Ans
 
 
-def post_trend_price(month: str,origin: str,destination: str):
-    TrendCol=mydb["TrendData"]
+def post_trend_price(month: str, origin: str, destination: str):
+    TrendCol = mydb["TrendData"]
     DestDict = TrendCol.find_one({"destination": destination})
     Ans = []
     for ele in DestDict["TD"]:
-        if("-"+month+"-" in ele["outboundDate"]):
+        if "-" + month + "-" in ele["outboundDate"]:
             Ans.append(ele["price"])
-        
+
     return Ans
-    
+
+
 def post_flight_multi_all(arrival_AC: str, departure_AC: str, dDate: str):
     x = mycol.find(
         {
