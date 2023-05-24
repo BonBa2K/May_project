@@ -11,28 +11,28 @@
 
 import csv
 import pymongo
-from datetime import date,timedelta
+from datetime import date, timedelta
 
 # pick the trend data you want
-with open("./trendfukuoka.csv", newline="") as csvfile:
+with open("./trendCJU.csv", newline="") as csvfile:
     reader = csv.DictReader(csvfile)
     temp = []
-    pass_date=date.fromisoformat('2023-05-20')
-    
+    pass_date = date.fromisoformat("2023-05-21")
+
     for row in reader:
         # print(row["outboundDate"], int(row["price"]))
-        D_first=date.fromisoformat(row["outboundDate"])
+        D_first = date.fromisoformat(row["outboundDate"])
         while D_first != pass_date:
             # print("------------------")
-            offset=timedelta(days=1)
+            offset = timedelta(days=1)
             # print("pass_date == ")
             # print(pass_date)
             temp.append({"outboundDate": str(pass_date), "price": None})
-            pass_date=pass_date+offset
+            pass_date = pass_date + offset
         # print("------------------")
         temp.append({"outboundDate": row["outboundDate"], "price": int(row["price"])})
-        pass_date=pass_date+offset
-        
+        pass_date = pass_date + offset
+
     # print("temp == ")
     # print(temp)
 
