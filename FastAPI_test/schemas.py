@@ -13,10 +13,13 @@ class trend_param(BaseModel):
     mon: str
     ori: str
     dest: str
+    
+class Message(BaseModel):
+    message: str
 
-class LogIn_param(BaseModel):
-    UserName: str
-    Password: str
+# class LogIn_param(BaseModel):
+#     UserName: str
+#     Password: str
 
 # 座位資訊
 class Flight_seats(BaseModel):
@@ -160,7 +163,6 @@ class Flight(BaseModel):
         orm_mode = True
 
 class useful_F_data(BaseModel):
-    id_in:Optional[str]
     airlineName:Optional[str]
     arrivalAirportCode:Optional[str]
     arrivalAirportName:Optional[str]
